@@ -6,7 +6,7 @@ Built for aviation nerds, plane spotters, or anyone who wants to know **what's f
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
 - 🛰 Real-time flight tracking using Flightradar24 API
 - 🗺 Distance filtering with geolocation support
