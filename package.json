@@ -1,0 +1,26 @@
+{
+  "name": "plane-detector-and-push-notifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "airport-iata-codes": "^1.0.13",
+    "airports-json": "^1.0.0",
+    "dotenv": "^17.2.1",
+    "flightradarapi": "^1.4.0",
+    "geolib": "^3.3.4",
+    "iata-airports": "^1.0.4",
+    "node-cron": "^4.2.1",
+    "node-fetch": "^2.7.0",
+    "node-telegram-bot-api": "^0.66.0",
+    "nodemon": "^3.1.10",
+    "say": "^0.16.0",
+    "talkify-tts": "^4.0.0"
+  }
+}
