@@ -24,10 +24,8 @@ const MAX_RADIUS_METERS = 17000; // 17 km
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN);
 let notifiedPlanes = new Set();
 
-// Gemini API'ye JSON'u açıklaması için gönder
 async function convertJsonToReadableText(flights) {
-  // Metni JSON string olarak Gemini'ye soruyoruz, Türkçe açıklama isteği ile
-  const promptText = `Bu uçuş verisini Türkçe olarak çok kısa şekilde açıkla amma yalnızca ülke adlarını  ver ve bana ancak nerden nereye ve hangi hızla (km/h) gitdiyini ver başka hiç bir şey verme:\n\n${JSON.stringify(
+  const promptText = `Bana yalnızca nerden nereye tam ülke adları ile ver başka hiç bir şey verme:\n\n${JSON.stringify(
     flights,
     null,
     2
@@ -112,8 +110,6 @@ async function checkPlanes() {
     );
 
     const flights = await frApi.getFlights(null, bounds);
-    // console.log("Detected flights:", flights.length);
-
     const newFlights = [];
 
     for (const flight of flights) {
