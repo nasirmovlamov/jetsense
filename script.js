@@ -1,21 +1,14 @@
 // Required packages
-// npm install node-fetch node-telegram-bot-api geolib node-cron
+require("dotenv").config(); // Load .env vars
+
 const { FlightRadar24API } = require("flightradarapi");
 const frApi = new FlightRadar24API();
 const say = require("say"); // ← TTS module
 const airports = require("airport-iata-codes");
-require("dotenv").config(); // Load .env vars
-
 const fetch = require("node-fetch");
 const TelegramBot = require("node-telegram-bot-api");
 const geolib = require("geolib");
-const cron = require("node-cron");
-
 // === CONFIGURATION ===
-
-console.log("process.env.LATITUDE", parseFloat(process.env.LATITUDE));
-console.log("process.env.LONGITUDE", parseFloat(process.env.LONGITUDE));
-
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -93,20 +86,16 @@ function getDirectionFromHeading(heading) {
 }
 
 function getCountryByIata(iataCode) {
-  console.log(iataCode);
   if (!iataCode) return "Unknown Country";
   const airport = airports(`${iataCode}`);
-  console.log(airport);
   return airport ? airport[0]?.city : "Unknown Country";
 }
 
 async function speakFlightsSlowly(flights, index = 0) {
-  console.log(flights[0]);
   if (index >= flights.length) return;
 
   const flight = flights[index];
   const readableText = await convertJsonToReadableText(flight);
-  console.log("Readable text:", readableText);
   say.speak(readableText, "Yelda", 0.8, () => {
     setTimeout(() => speakFlightsSlowly(flights, index + 1), 4000);
   });
