@@ -1,5 +1,4 @@
 // Required packages
-require("dotenv").config(); // Load .env vars
 
 const { FlightRadar24API } = require("flightradarapi");
 const frApi = new FlightRadar24API();
@@ -8,6 +7,8 @@ const airports = require("airport-iata-codes");
 const fetch = require("node-fetch");
 const TelegramBot = require("node-telegram-bot-api");
 const geolib = require("geolib");
+require("dotenv").config(); // Load .env vars
+
 // === CONFIGURATION ===
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
