@@ -18,6 +18,7 @@ const YOUR_LOCATION = {
   latitude: parseFloat(process.env.LATITUDE),
   longitude: parseFloat(process.env.LONGITUDE),
 };
+
 const CHECK_INTERVAL_MS = 5000; // 5 seconds
 const MAX_RADIUS_METERS = 20000; // 20 km
 
